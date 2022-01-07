@@ -1,0 +1,11 @@
+_______Client chat Log______  
+Connection Initiated on 2022-01-07 at 11:52:59
+11:52:59: Mac Address Sent.
+11:52:59: Default Message Sent.
+11:52:59: Current Up Time Sent.
+11:52:59: PC Name Sent.
+11:52:59: Message Sent.
+11:52:59: IP Address Sent.
+11:52:59: Current Running Processes Sent.
+11:52:59: Server: This is a default message from the Server.
+11:52:59: Server: hi client

@@ -12,50 +12,50 @@ from threading import *
 
 # This creates the Class ClientExtract with the following attributes' computer_name,mac_address,ip_address
 class ClientExtract:
-    _computer_name = ''
-    _mac_address = ''
-    _ip_address = ''
+    __computer_name = ''
+    __mac_address = ''
+    __ip_address = ''
 
     def __init__(self, mac_address, ip_address, computer_name):
 
-        self._computer_name = computer_name
-        self._mac_address = mac_address
-        self._ip_address = ip_address
+        self.__computer_name = computer_name
+        self.__mac_address = mac_address
+        self.__ip_address = ip_address
 
     # This method gets the computername of the client and then writes the computer name to a textfile
     def get_computername(self):
-        self._computer_name = socket.gethostname()
-        print(f"Hostname of client: {self._computer_name}")
+        self.__computer_name = socket.gethostname()
+        print(f"Hostname of client: {self.__computer_name}")
         computername = open('client extracted information/client_extractcomputername.txt', 'w')
-        computername.writelines(self._computer_name)
-        return self._computer_name
+        computername.writelines(self.__computer_name)
+        return self.__computer_name
 
     # This method gets the ip address of the client and then writes the ip address to a textfile
     def get_ip(self):
-        self._ip_address = socket.gethostbyname(self._computer_name)
-        print(f"IP address of client: {self._ip_address}")
+        self.__ip_address = socket.gethostbyname(self.__computer_name)
+        print(f"IP address of client: {self.__ip_address}")
         ip = open('client extracted information/client_extractip.txt', 'w')
-        ip.writelines(self._ip_address)
-        return self._ip_address
+        ip.writelines(self.__ip_address)
+        return self.__ip_address
 
     # This method gets the mac address of the client and then writes the mac address to a textfile
     def get_mac(self):
         if sys.platform == 'win32':
             for line in os.popen('ipconfig /all'):
                 if line.lstrip().startswith('Physical Address'):
-                    self._mac_address = line.split(':')[1].strip().replace('-', ':')
+                    self.__mac_address = line.split(':')[1].strip().replace('-', ':')
                     break
 
         else:
             for line in os.popen('/sbin/ipconfig'):
                 if line.find('Ether') > -1:
-                    self._mac_address = line.split()[4]
+                    self.__mac_address = line.split()[4]
                     break
 
-        print(f"MAC ADDRESS of client:{self._mac_address}")
+        print(f"MAC ADDRESS of client:{self.__mac_address}")
         mac = open('client extracted information/client_extractmac.txt', 'w')
-        mac.writelines(self._mac_address)
-        return self._mac_address
+        mac.writelines(self.__mac_address)
+        return self.__mac_address
 
 
 # This function runs the methods inside the class ClientExtract

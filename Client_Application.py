@@ -23,10 +23,10 @@ class ClientCreation(NetworkSocket):
     port = 3212  # overrides the attribute port in the abstract class NetworkSocket
     client_socket = socket(AF_INET, SOCK_STREAM)  # creates the attribute client_socket to create the socket
     # connection to the server
-    _mac_address = None
-    _ip_address = None
-    _hostname = None
-    _upTime = None
+    __mac_address = None
+    __ip_address = None
+    __hostname = None
+    __upTime = None
     line = 1
     end = 'end'  # overrides the attribute end in the abstract class NetworkSocket
     foreground = 'green'  # overrides the attribute foreground in the abstract class NetworkSocket
@@ -45,32 +45,32 @@ class ClientCreation(NetworkSocket):
     def set_mac_address(self):
         mac_data = linecache.getline('client extracted information/client_extractmac.txt', self.line)
         mac = mac_data.rstrip('\n')
-        self._mac_address = mac
-        return self._mac_address
+        self.__mac_address = mac
+        return self.__mac_address
 
     # This method sets the ip address of the client by using linecache to read the ip address in the text  file and
     # sets the ip address as the private attribute ip_address
     def set_ip_address(self):
         ip_data = linecache.getline('client extracted information/client_extractip.txt', self.line)
         ip = ip_data.rstrip('\n')
-        self._ip_address = ip
-        return self._ip_address
+        self.__ip_address = ip
+        return self.__ip_address
 
     # This method sets the hostname of the client by using linecache to read the hostname in the text file and sets
     # the hostname as the private attribute hostname
     def set_hostname(self):
         hostname_data = linecache.getline('client extracted information/client_extractcomputername.txt', self.line)
         hostname = hostname_data.rstrip('\n')
-        self._hostname = hostname
-        return self._hostname
+        self.__hostname = hostname
+        return self.__hostname
 
     # This method sets the uptime of the client by using linecache to read the uptime in the text file and sets
     # the hostname as the private attribute uptime
     def set_client_uptime(self):
         uptime_data = linecache.getline('client extracted information/client_extractuptime.txt', self.line)
         uptime = uptime_data.rstrip('\n')
-        self._upTime = uptime
-        return self._upTime
+        self.__upTime = uptime
+        return self.__upTime
 
     #   overrides method connection in abstract class NetworkSocket
     def connection(self):

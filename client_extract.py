@@ -72,6 +72,7 @@ def run_uptime():
     print(f"Client uptime : {client_uptime} seconds")
     up = open('client extracted information/client_extractuptime.txt', 'w')
     up.writelines(str(client_uptime))
+    return str(client_uptime)
 
 
 # This function gets the running processes of the client and then writes it to a textfile
@@ -81,6 +82,7 @@ def get_running_processes():
     for process in p.Win32_Process():
         file.writelines(process.Name + "\n")
         print(process.Name)
+        return process.Name
 
 
 # This function run all the functions for client_extract which is used by the Get client information button which
